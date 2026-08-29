@@ -49,8 +49,7 @@ export default function SignInForm() {
         }
     };
 
-    const DEMO_OWNER_EMAIL = "owner56@gmail.com";
-    const DEMO_OWNER_PASSWORD = "owner56@D";
+
 
     const handleDemoSubmit = async () => {
         setErrorMessage('');
@@ -217,7 +216,7 @@ export default function SignInForm() {
                     </Link>
                 </p>
 
-                {/* 1-Click Demo Owner Button */}
+                {/* 1-Click Demo Owner Button
                 <div className="mt-6 pt-5 border-t border-dashed border-slate-200">
                     <button
                         type="button"
@@ -232,7 +231,7 @@ export default function SignInForm() {
                         )}
                         <span>{demoLoading ? 'Logging in demo...' : 'One-Click Demo Owner Login'}</span>
                     </button>
-                </div>
+                </div> */}
 
             </div>
         </div>

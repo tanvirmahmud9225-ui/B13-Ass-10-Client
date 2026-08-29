@@ -1,4 +1,5 @@
 
+import AllPropertiesSearch from '@/components/main/AllPropertiesSearch';
 import { HomepagePagination } from '@/components/main/HomepagePagination';
 import PropertyCard from '@/components/main/PropertyCard';
 import { getAllProperties, getProperties } from '@/lib/api/getProperties';
@@ -39,6 +40,9 @@ const page = async ({ searchParams }) => {
     return (
         <div className='max-w-7xl mx-auto'>
             <h2 className='text-4xl py-10 font-bold'>This is all poperty page</h2>
+            <div className='text-center mb-8'>
+                <AllPropertiesSearch />
+            </div>
             <div className='grid grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                 {
                     properties?.map((property) => (

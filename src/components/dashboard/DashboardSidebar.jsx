@@ -39,10 +39,11 @@ export default function DashboardSidebarClient({ user }) {
                 },
             },
         });
-        console.log("Logging out...");
 
         // উদাহরণ হিসেবে লগইন পেইজে রিডাইরেক্ট:
         // router.push('/login');
+
+
     };
 
     // রোল অনুযায়ী মেনু আইটেম
@@ -50,7 +51,7 @@ export default function DashboardSidebarClient({ user }) {
         tenant: [
             { icon: HiHome, label: "Back to Home", link: '/' },
             { icon: HiViewGrid, label: "Overview", link: '/dashboard/tenant/overview' },
-            { icon: HiCalendar, label: "My Bookings", link: '/dashboard/tenant/bookings' },
+            { icon: HiCalendar, label: "My Booking", link: '/dashboard/tenant/booking' },
             { icon: HiHeart, label: "Favourites", link: '/dashboard/tenant/favourites' },
             { icon: HiUser, label: "My Profile", link: '/dashboard/tenant/profile' },
         ],
@@ -73,8 +74,11 @@ export default function DashboardSidebarClient({ user }) {
         ]
     };
 
-    const currentRole = user?.role || 'owner';
-    const navItems = dashBoardItem[currentRole] || dashBoardItem.owner;
+    const currentRole = user?.role;
+    const navItems = dashBoardItem[currentRole] || dashBoardItem.tenant;
+
+
+
 
     // সাইডবারের মূল কনটেন্ট
     const SidebarContent = () => (
@@ -102,7 +106,16 @@ export default function DashboardSidebarClient({ user }) {
             <div className="flex-1 overflow-y-auto px-4 py-6 space-y-1.5 scrollbar-thin scrollbar-thumb-slate-800">
                 {navItems.map((item) => {
                     const Icon = item.icon;
-                    const isActive = pathname === item.link.split('?')[0];
+
+                    // const basePath = item.link.split('?')[0];
+
+                    // const isActive =
+                    //     pathname === basePath ||
+                    //     (pathname === `/dashboard/${currentRole}` &&
+                    //         basePath === `/dashboard/${currentRole}/overview`);
+
+                    const basePath = item.link
+                    const isActive = pathname === basePath || (pathname === `/dashboard/${currentRole}` && basePath === `/dashboard/${currentRole}/overview`)
 
                     return (
                         <Link

@@ -24,6 +24,7 @@ export default function Navbar() {
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
 
+
     const handleSignOut = async () => {
         await authClient.signOut({
             fetchOptions: {
@@ -88,8 +89,8 @@ export default function Navbar() {
                                         key={link.name}
                                         href={link.href}
                                         className={`relative py-1 text-sm font-medium transition-colors duration-200 ${isActive
-                                                ? 'text-blue-600 font-semibold'
-                                                : 'text-slate-600 hover:text-slate-900'
+                                            ? 'text-blue-600 font-semibold'
+                                            : 'text-slate-600 hover:text-slate-900'
                                             }`}
                                     >
                                         {link.name}
@@ -128,7 +129,7 @@ export default function Navbar() {
 
                                 {/* Dashboard Link */}
                                 <Link
-                                    href="/dashboard/owner/overview"
+                                    href={`/dashboard/${user?.role}`}
                                     className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/60 rounded-xl transition-all duration-200"
                                 >
                                     <HiViewGrid className="w-4 h-4 text-slate-500" />
@@ -199,8 +200,8 @@ export default function Navbar() {
                                             href={link.href}
                                             onClick={() => setIsOpen(false)}
                                             className={`text-sm font-semibold px-3 py-2.5 rounded-xl transition-colors ${isActive
-                                                    ? 'bg-blue-50 text-blue-600'
-                                                    : 'text-slate-700 hover:bg-slate-50'
+                                                ? 'bg-blue-50 text-blue-600'
+                                                : 'text-slate-700 hover:bg-slate-50'
                                                 }`}
                                         >
                                             {link.name}
@@ -226,7 +227,7 @@ export default function Navbar() {
                                         </div>
 
                                         <Link
-                                            href="/dashboard/owner/overview"
+                                            href={`/dashboard/${user?.role}`}
                                             onClick={() => setIsOpen(false)}
                                             className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 p-2.5 rounded-xl transition-colors"
                                         >

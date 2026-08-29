@@ -16,6 +16,7 @@ import {
     FaArrowLeft,
 } from "react-icons/fa";
 import { BooknowModal } from "./BooknowModal";
+import Image from "next/image";
 
 export default function PropertyDetailsPage({ property }) {
     const [isFavorite, setIsFavorite] = useState(false);
@@ -78,11 +79,18 @@ export default function PropertyDetailsPage({ property }) {
 
                     {/* Main Image */}
                     <div className="w-full h-[400px] rounded-3xl overflow-hidden shadow-md">
-                        <img
+                        <Image
+                            src={data?.imageUrl}
+                            alt="Picture of the author"
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                            width={5000}
+                            height={5000}
+                        />
+                        {/* <img
                             src={data.imageUrl}
                             alt={data.title}
                             className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                        />
+                        /> */}
                     </div>
 
                     {/* Title & Location */}

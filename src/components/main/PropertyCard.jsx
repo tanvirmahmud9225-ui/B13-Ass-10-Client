@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
     FaMapMarkerAlt,
@@ -29,12 +30,19 @@ export default function PropertyCard({ property }) {
 
             {/* Image Wrapper: flex-1 সরিয়ে shrink-0 দেওয়া হয়েছে যাতে ছবির হাইট ফিক্সড থাকে */}
             <div className="relative h-56 w-full shrink-0 overflow-hidden">
-                <img
+                <Image
+                    src={imageUrl || "/placeholder-property.jpg"}
+                    alt="Picture of the author"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-125"
+                    width={5000}
+                    height={5000}
+                />
+                {/* <img
                     src={imageUrl || "/placeholder-property.jpg"}
                     // এখানে h-full w-full যোগ করা হয়েছে এবং group-hover বানান ঠিক করা হয়েছে
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-125"
                     alt={title}
-                />
+                /> */}
 
                 {/* Status Badge */}
                 <div className="absolute left-3 top-3">
