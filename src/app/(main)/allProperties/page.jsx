@@ -9,7 +9,7 @@ import React from 'react';
 
 const page = async ({ searchParams }) => {
 
-    const { page } = await searchParams;
+    const { page, allProductSearch } = await searchParams;
 
 
 
@@ -29,7 +29,7 @@ const page = async ({ searchParams }) => {
     const userId = session?.user?.id;
 
     // const properties = await getProperties(userId);
-    const propertyData = await getAllProperties(token, page);
+    const propertyData = await getAllProperties(token, page, allProductSearch);
     const properties = propertyData?.data
     const propertyPage = propertyData?.page;
     const totalPage = propertyData?.totalPage

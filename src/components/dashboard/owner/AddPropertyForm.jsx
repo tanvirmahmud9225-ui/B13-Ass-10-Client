@@ -2,6 +2,8 @@
 
 import { creatProperties } from "@/lib/actions/createProperties";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import {
     FaBuilding,
@@ -28,6 +30,7 @@ const availableAmenities = [
 ];
 
 const AddPropertyForm = ({ token }) => {
+    const router = useRouter()
 
     const { data: session, isPending, error, } = authClient.useSession()
     const userId = session?.user?.id
@@ -93,6 +96,10 @@ const AddPropertyForm = ({ token }) => {
             amenities: formData.amenities,
             userId,
             status: "pending", // Assignment required status
+            bookingStatus: "available",
+            rejectionReason: null,
+            approvedAt: null,
+            rejectedAt: null
         };
 
         // console.log("Submitting Property Data:", propertyPayload);
@@ -138,7 +145,8 @@ const AddPropertyForm = ({ token }) => {
 
         const res = await creatProperties(propertyPayload, token)
         if (res.insertedId) {
-            alert("Property Added Successfully!");
+            toast.success('Successfully Add Property')
+            router.refresh()
             setFormData({
                 title: "",
                 location: "",

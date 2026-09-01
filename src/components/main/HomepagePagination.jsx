@@ -2,23 +2,27 @@
 
 import { Pagination } from "@heroui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function HomepagePagination({ totalPage, propertyPage }) {
-
     const router = useRouter();
+    const searchParams = useSearchParams();
 
-    const [page, setPage] = useState(Number(propertyPage));
-    const totalPages = Number(totalPage);
+    const page = Number(propertyPage) || 1;
+    const totalPages = Number(totalPage) || 1;
+    const allProductSearch = searchParams.get("allProductSearch") || "";
+
+    const buildHref = (newPage) => {
+        const params = new URLSearchParams();
+        params.set("page", newPage);
+        if (allProductSearch) params.set("allProductSearch", allProductSearch);
+        return `/allProperties?${params.toString()}`;
+    };
 
     const gotToPage = (newPage) => {
-        if (newPage < 1 || newPage > totalPage) return;
-        setPage(newPage)
-        router.push(`allProperties?page=${newPage}`)
-    }
-
-
+        if (newPage < 1 || newPage > totalPages) return;
+        router.push(buildHref(newPage));
+    };
 
     return (
         <Pagination className="justify-center pt-5 pb-10">
@@ -30,9 +34,9 @@ export function HomepagePagination({ totalPage, propertyPage }) {
                     </Pagination.Previous>
                 </Pagination.Item>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                    <Link key={p} href={`allProperties?page=${p}`}>
-                        <Pagination.Item >
-                            <Pagination.Link isActive={p === page} onPress={() => setPage(p)}>
+                    <Link key={p} href={buildHref(p)}>
+                        <Pagination.Item>
+                            <Pagination.Link isActive={p === page}>
                                 {p}
                             </Pagination.Link>
                         </Pagination.Item>

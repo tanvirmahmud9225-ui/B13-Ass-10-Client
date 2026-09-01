@@ -65,8 +65,8 @@ export default function DashboardSidebarClient({ user }) {
         ],
         admin: [
             { icon: HiHome, label: "Back to Home", link: '/' },
-            { icon: HiViewGrid, label: "Overview", link: '/dashboard/admin/overview' },
-            { icon: HiOfficeBuilding, label: "All Properties", link: '/dashboard/admin/properties' },
+            { icon: HiViewGrid, label: "Overview", link: '/dashboard/admin' },
+            { icon: HiOfficeBuilding, label: "All Properties", link: '/dashboard/admin/allProperties' },
             { icon: HiCalendar, label: "Manage Bookings", link: '/dashboard/admin/bookings' },
             { icon: HiUser, label: "User Management", link: '/dashboard/admin/users' },
             { icon: HiShieldCheck, label: "Verification", link: '/dashboard/admin/verification' },
@@ -114,8 +114,15 @@ export default function DashboardSidebarClient({ user }) {
                     //     (pathname === `/dashboard/${currentRole}` &&
                     //         basePath === `/dashboard/${currentRole}/overview`);
 
-                    const basePath = item.link
-                    const isActive = pathname === basePath || (pathname === `/dashboard/${currentRole}` && basePath === `/dashboard/${currentRole}/overview`)
+                    const basePath = item.link.split("?")[0];
+
+                    const isActive =
+                        pathname === basePath ||
+                        (
+                            pathname === `/dashboard/${currentRole}` &&
+                            basePath === `/dashboard/${currentRole}/overview`
+                        );
+
 
                     return (
                         <Link

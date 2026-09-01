@@ -28,7 +28,6 @@ export default async function Success({ searchParams }) {
     if (status === 'complete') {
         // Save payment data
         const pay_Data = await payment({ ...metadata })
-        console.log('Payment saved:', pay_Data)
 
         const amount = (amount_total / 100).toFixed(2)
 

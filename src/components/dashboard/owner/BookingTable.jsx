@@ -59,7 +59,6 @@ export default function BookingTable({ userId, bookingData }) {
     // }
 
 
-    console.log(bookingData);
 
 
 

@@ -10,7 +10,6 @@ export default function SignInForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ email, password });
     };
 
     const handleGoogleSignIn = () => {

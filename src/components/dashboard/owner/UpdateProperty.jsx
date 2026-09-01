@@ -1,5 +1,6 @@
 "use client";
 
+
 import { toast } from "@heroui/react";
 import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -91,7 +92,7 @@ export default function UpdateProperty({ property }) {
             bathrooms: Number(formData.bathrooms),
         };
 
-        console.log(updatedData);
+
 
 
         try {
@@ -108,8 +109,11 @@ export default function UpdateProperty({ property }) {
             }
 
             const data = await res.json();
+
             if (data) {
-                toast.success('suc')
+                toast.success('successfully updated')
+                router.back()
+                router.refresh()
             }
 
         } catch (error) {

@@ -1,16 +1,22 @@
 'use client'
 import { Input } from '@heroui/react';
 import { Button } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const AllPropertiesSearch = () => {
+    const router = useRouter();
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("Searching.........", e.target.allProductSearch.value);
+        const searchValue = e.target.allProductSearch.value.trim();
 
-    }
-
+        if (searchValue) {
+            router.push(`/allProperties?allProductSearch=${encodeURIComponent(searchValue)}`);
+        } else {
+            router.push(`/allProperties`);
+        }
+    };
 
     return (
         <div className=' '>

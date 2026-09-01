@@ -22,6 +22,7 @@ export default function PropertyCard({ property }) {
         imageUrl,
         description,
         status,
+        bookingStatus,
     } = property;
 
     return (
@@ -47,14 +48,12 @@ export default function PropertyCard({ property }) {
                 {/* Status Badge */}
                 <div className="absolute left-3 top-3">
                     <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium capitalize ${status === "pending"
+                        className={`rounded-full px-3 py-1 text-xs font-medium capitalize ${bookingStatus === "available"
                             ? "bg-yellow-100 text-yellow-800"
-                            : status === "approved"
-                                ? "bg-green-100 text-green-800"
-                                : "bg-gray-100 text-gray-800"
+                            : "bg-gray-100 text-gray-800"
                             }`}
                     >
-                        {status}
+                        {bookingStatus}
                     </span>
                 </div>
 

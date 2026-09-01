@@ -62,7 +62,7 @@ export default function HeroSection() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log('Search Filters:', { tab: activeTab, ...searchParams });
+
         // এখানে আপনার Search/Filter রাউটিং লজিক বসাবেন
     };
 
@@ -133,8 +133,8 @@ export default function HeroSection() {
                                 type="button"
                                 onClick={() => setActiveTab(tab.key)}
                                 className={`px-5 py-2 rounded-t-xl text-sm font-semibold transition-all duration-200 ${activeTab === tab.key
-                                        ? 'bg-black/60 text-white backdrop-blur-xl border-t border-x border-white/20 shadow-lg'
-                                        : 'text-slate-300 hover:text-white bg-black/20 hover:bg-black/40'
+                                    ? 'bg-black/60 text-white backdrop-blur-xl border-t border-x border-white/20 shadow-lg'
+                                    : 'text-slate-300 hover:text-white bg-black/20 hover:bg-black/40'
                                     }`}
                             >
                                 {tab.label}

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiEdit2, FiTrash2, FiEye, FiChevronUp } from "react-icons/fi";
+import { DeleteProperty } from "./DeleteProperty";
 
 const statusStyles = {
     pending: "bg-amber-100 text-amber-700",
@@ -12,7 +13,7 @@ const statusStyles = {
     inactive: "bg-gray-100 text-gray-600",
 };
 
-export default function MyProperties({ properties = [] }) {
+export default function MyProperties({ properties = [], token }) {
     if (!properties || properties.length === 0) {
         return (
             <div className="text-center py-16 bg-white rounded-2xl border border-gray-200">
@@ -20,6 +21,7 @@ export default function MyProperties({ properties = [] }) {
             </div>
         );
     }
+
 
 
 
@@ -126,7 +128,8 @@ export default function MyProperties({ properties = [] }) {
                                             className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                                             title="Delete"
                                         >
-                                            <FiTrash2 className="w-4 h-4" />
+
+                                            <DeleteProperty title={property?.title} id={property?._id} token={token} />
                                         </button>
                                     </div>
                                 </td>

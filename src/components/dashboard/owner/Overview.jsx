@@ -1,6 +1,7 @@
 import { useSession } from "@/lib/auth-client";
 import React from "react";
 import { HiOutlineCalendar, HiOutlineHeart, HiOutlineHome, HiOutlineUser } from "react-icons/hi2";
+import OwnerChart from "./OwnerChart";
 
 export default function Overview() {
     // স্ট্যাট কার্ডগুলোর ডেটা (ডাইনামিক ব্যবহারের সুবিধার্থে)
@@ -81,7 +82,7 @@ export default function Overview() {
                 ))}
             </div>
 
-            {/* 3. Recent Activity Section */}
+            {/* 3. Recent Activity Section
             <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200/80 shadow-sm space-y-4">
                 <h2 className="text-lg font-semibold text-gray-900">Recent Activity</h2>
                 <ul className="space-y-3 text-sm md:text-base text-gray-600">
@@ -92,6 +93,12 @@ export default function Overview() {
                         </li>
                     ))}
                 </ul>
+            </div> */}
+
+
+            {/* 4.Added Chart */}
+            <div>
+                <OwnerChart />
             </div>
         </div>
     );

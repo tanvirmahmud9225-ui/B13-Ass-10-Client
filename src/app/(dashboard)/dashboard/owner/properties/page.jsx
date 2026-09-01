@@ -5,9 +5,14 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 
 const page = async ({ searchParams }) => {
-
-
     const { page } = await searchParams;
+
+    const { token } = await auth?.api.getToken({
+        headers: await headers()
+    })
+
+
+
 
     const session = await auth.api.getSession({
         headers: await headers(),
@@ -25,7 +30,7 @@ const page = async ({ searchParams }) => {
 
     return (
         <div className="p-6">
-            <MyProperties properties={properties} />
+            <MyProperties properties={properties} token={token} />
             <div >
                 <MyPropertiesPagination propertyPage={propertyPage} totalPage={totalPage} />
             </div>

@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toast } from "@heroui/react";
 
 
 
@@ -27,7 +28,7 @@ export default function RootLayout({ children }) {
       <body className="">
 
         {children}
-
+        <Toast.Provider placement="top end" />
       </body>
     </html>
   );

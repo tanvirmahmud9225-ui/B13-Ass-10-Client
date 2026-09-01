@@ -8,9 +8,9 @@ export const getProperties = async (userId, page) => {
 
 
 
-export const getAllProperties = async (token, page) => {
+export const getAllProperties = async (token, page, allProductSearch) => {
 
-    const res = await fetch(`${baseUrl}/api/allproperties?page=${page}`, {
+    const res = await fetch(`${baseUrl}/api/allproperties?page=${page}&allProductSearch=${allProductSearch || ''}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
